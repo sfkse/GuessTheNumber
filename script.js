@@ -4,7 +4,7 @@
 
 const secret = Math.trunc(Math.random() * 100 + 1);
 
-console.log(secret);
+
 let score = Number(document.querySelector(".score").textContent);
 
 document.querySelector(".check").addEventListener('click', () => {
