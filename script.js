@@ -31,29 +31,57 @@ document.querySelector(".check").addEventListener('click', () => {
 
     }
     else if (guess > secret) {
-        if (score > 0) {
-            document.querySelector(".message").textContent = "📈Too high!";
-            score--;
-            document.querySelector(".score").textContent = score;
-            document.querySelector(".guess").value = "";
+        if (score > 1) {
+
+            checkDifference('📉Too High!');
+
         } else {
 
-
+            fail();
         }
 
 
     }
-    else if (guess < secret && score > 0) {
-        document.querySelector(".message").textContent = "📉Too low!";
-        score--;
-        document.querySelector(".score").textContent = score;
-        document.querySelector(".guess").value = "";
+    else if (guess < secret) {
+        if (score > 1) {
+
+            checkDifference('📈Too Low!');
+        }
+        else {
+
+            fail();
+        }
+
     }
     else if (score == 0) {
 
-        document.querySelector(".message").textContent = "⛔Failed! Maybe next time";
-        document.querySelector(".check").setAttribute("disabled", " ");
-        document.querySelector("body").style.backgroundColor = "#c90202";
+        fail();
 
     }
+})
+
+function fail() {
+
+
+    document.querySelector(".message").textContent = "⛔Failed! Maybe next time";
+    document.querySelector(".check").setAttribute("disabled", " ");
+    document.querySelector("body").style.backgroundColor = "#c90202";
+    document.querySelector(".score").textContent = 0;
+    document.querySelector(".number").textContent = secret;
+
+}
+
+function checkDifference(diff) {
+
+    document.querySelector(".message").textContent = diff;
+    score--;
+    document.querySelector(".score").textContent = score;
+    document.querySelector(".guess").value = "";
+}
+
+
+document.querySelector(".again").addEventListener('click', function () {
+
+    window.location.reload();
+    console.log("reset");
 })
