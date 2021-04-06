@@ -33,7 +33,7 @@ document.querySelector(".check").addEventListener('click', () => {
     else if (guess > secret) {
         if (score > 1) {
 
-            checkDifference('📉Too High!');
+            checkDifference('📈Too High!');
 
         } else {
 
@@ -45,7 +45,7 @@ document.querySelector(".check").addEventListener('click', () => {
     else if (guess < secret) {
         if (score > 1) {
 
-            checkDifference('📈Too Low!');
+            checkDifference('📉Too Low!');
         }
         else {
 
