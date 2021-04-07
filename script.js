@@ -2,11 +2,13 @@
 
 // document.querySelector(".message").textContent = "heyy"
 
-const secret = Math.trunc(Math.random() * 100 + 1);
+let secret = Math.trunc(Math.random() * 100) + 1;
 
 
 let score = Number(document.querySelector(".score").textContent);
+let highScore = Number(document.querySelector(".highscore").textContent);
 
+console.log(highScore, secret)
 document.querySelector(".check").addEventListener('click', () => {
 
     const guess = Number(document.querySelector(".guess").value);
@@ -23,11 +25,17 @@ document.querySelector(".check").addEventListener('click', () => {
 
         document.querySelector(".message").textContent = "🥇Congrats!";
         document.querySelector(".number").textContent = secret;
-        document.querySelector(".highscore").textContent = score;
+
         document.querySelector(".check").setAttribute("disabled", " ");
         document.querySelector("body").style.backgroundColor = "green";
 
 
+        if (score > highScore) {
+            document.querySelector(".score").textContent = score;
+            highScore = score;
+            document.querySelector(".highscore").textContent = highScore;
+        }
+        console.log(score, highScore)
 
     }
     else if (guess > secret) {
@@ -82,6 +90,18 @@ function checkDifference(diff) {
 
 document.querySelector(".again").addEventListener('click', function () {
 
-    window.location.reload();
-    console.log("reset");
+    score = 20;
+    document.querySelector(".message").textContent = "Start guessing...";
+    document.querySelector(".score").textContent = score;
+    document.querySelector("body").style.backgroundColor = "#000";
+    document.querySelector(".number").textContent = "?";
+    document.querySelector(".check").removeAttribute("disabled", " ");
+    document.querySelector(".guess").value = "";
+    secret = Math.trunc(Math.random() * 100) + 1;
+    console.log(highScore, secret)
+
+
+
+
+
 })
