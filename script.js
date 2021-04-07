@@ -8,7 +8,7 @@ let secret = Math.trunc(Math.random() * 100) + 1;
 let score = Number(document.querySelector(".score").textContent);
 let highScore = Number(document.querySelector(".highscore").textContent);
 
-// console.log(highScore, secret)
+// console.log(secret)
 document.querySelector(".check").addEventListener('click', () => {
 
     const guess = Number(document.querySelector(".guess").value);
@@ -98,7 +98,7 @@ document.querySelector(".again").addEventListener('click', function () {
     document.querySelector(".check").removeAttribute("disabled", " ");
     document.querySelector(".guess").value = "";
     secret = Math.trunc(Math.random() * 100) + 1;
-    // console.log(highScore, secret)
+    // console.log(secret)
 
 
 
